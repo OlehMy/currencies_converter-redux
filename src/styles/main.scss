@@ -2,10 +2,11 @@
 @import './utils/reset';
 @import './utils/vars';
 @import './utils/mixins';
+@import './utils/extends';
 
 html {
   font-family: 'Mont', sans-serif;
-  background-color: $c-bg;
-  color: $c-text;
+  background-color: $c-white;
+  color: $c-dark;
 }
 

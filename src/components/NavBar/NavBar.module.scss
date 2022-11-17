@@ -1,0 +1,14 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/extends';
+@import '../../styles/utils/reset';
+
+.nav {
+  &__list {
+    @extend %flex-row-sb;
+  }
+
+  &__item {
+    padding-right: 16px;
+    list-style: none;
+  }
+}

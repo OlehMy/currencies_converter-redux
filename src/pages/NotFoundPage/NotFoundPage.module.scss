@@ -1,0 +1,19 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/extends';
+
+.notFound {
+  margin-top: 20vw;
+  @extend %flex-col;
+
+  &__img {
+    display: inline-block;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    color: $c-dark;
+  }
+}
