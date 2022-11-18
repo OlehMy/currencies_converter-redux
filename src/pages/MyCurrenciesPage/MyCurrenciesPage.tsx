@@ -1,9 +1,19 @@
 import React from 'react';
+// import { CurrensyItem } from '../../components/CurrensyItem';
+import { Loader } from '../../components/Loader';
+import { SearchInput } from '../../components/SearchInput';
+import classes from './MyCurrenciesPage.module.scss';
 
 export const MyCurrenciesPage: React.FC = () => (
-  <section className="section">
-    <div className="container">
-      <h1 className="title">My Currencies Page</h1>
+  <section className={classes.myCurrencies}>
+    <div className={classes.myCurrencies__wrapper}>
+      <div className={classes.myCurrencies__header}>
+        <h1 className={classes.myCurrencies__title}>My currencies</h1>
+        <div className={classes.myCurrencies__inputGroup}>
+          <SearchInput />
+        </div>
+      </div>
+      <Loader />
     </div>
   </section>
 );

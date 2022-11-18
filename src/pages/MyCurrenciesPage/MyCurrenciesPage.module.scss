@@ -1,7 +1,7 @@
 @import '../../styles/utils/vars';
 @import '../../styles/utils/extends';
 
-.allCurrencies {
+.myCurrencies {
   @extend %flex-col;
 
   &__wrapper {
@@ -25,6 +25,7 @@
   }
 
   &__inputGroup {
+    position: relative;
     flex-basis: 50%;
     min-width: 200px;
     height: 36px;
