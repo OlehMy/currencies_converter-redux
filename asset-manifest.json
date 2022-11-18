@@ -1,14 +1,17 @@
 {
   "files": {
-    "main.css": "/currencies_converter-redux/static/css/main.4f5456c1.css",
-    "main.js": "/currencies_converter-redux/static/js/main.b2b40125.js",
+    "main.css": "/currencies_converter-redux/static/css/main.6c43b1ff.css",
+    "main.js": "/currencies_converter-redux/static/js/main.d5025be6.js",
     "static/media/not-found.gif": "/currencies_converter-redux/static/media/not-found.d33b903e906422cf1444.gif",
+    "static/media/Mont-Regular.otf": "/currencies_converter-redux/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
+    "static/media/Mont-SemiBold.otf": "/currencies_converter-redux/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
+    "static/media/Mont-Bold.otf": "/currencies_converter-redux/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
     "index.html": "/currencies_converter-redux/index.html",
-    "main.4f5456c1.css.map": "/currencies_converter-redux/static/css/main.4f5456c1.css.map",
-    "main.b2b40125.js.map": "/currencies_converter-redux/static/js/main.b2b40125.js.map"
+    "main.6c43b1ff.css.map": "/currencies_converter-redux/static/css/main.6c43b1ff.css.map",
+    "main.d5025be6.js.map": "/currencies_converter-redux/static/js/main.d5025be6.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f5456c1.css",
-    "static/js/main.b2b40125.js"
+    "static/css/main.6c43b1ff.css",
+    "static/js/main.d5025be6.js"
   ]
 }
