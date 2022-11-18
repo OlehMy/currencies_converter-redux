@@ -3,11 +3,11 @@
 .navLink {
   position: relative;
 
-  color: $c-white;
+  color: $c-light;
   text-decoration: none;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 16px;
 
   &::after {
     position: absolute;
@@ -27,6 +27,6 @@
 
   &.isActive {
     transition: color 0.3s linear;
-    color: $c-light;
+    color: $c-white;
   }
 }
