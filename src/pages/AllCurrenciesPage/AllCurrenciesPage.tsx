@@ -10,6 +10,7 @@ import classes from './AllCurrenciesPage.module.scss';
 export const AllCurrenciesPage: React.FC = () => {
   const dispath = useDispatch();
   const store = useSelector<Store, Currencies>((store) => store.currencies);
+  console.log('store: ', store);
 
   useEffect(() => {
     dispath(loadCurrencies());
@@ -27,7 +28,7 @@ export const AllCurrenciesPage: React.FC = () => {
         {store.loading ? (
           <Loader />
         ) : (
-          store.rates.map(({ currencyName, currencyRate }) => (
+          store.filteredRates.map(({ currencyName, currencyRate }) => (
             <CurrensyItem
               key={currencyName}
               name={currencyName}

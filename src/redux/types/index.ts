@@ -8,6 +8,7 @@ export interface Currencies {
   error: string;
   base: string;
   rates: Rate[];
+  filteredRates: Rate[];
 }
 
 export interface Rate {

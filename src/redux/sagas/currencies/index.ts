@@ -1,10 +1,18 @@
 import axios, { AxiosResponse } from 'axios';
-import { call, put, StrictEffect, takeLatest } from 'redux-saga/effects';
+import {
+  call,
+  put,
+  StrictEffect,
+  // takeEvery,
+  takeLatest,
+} from 'redux-saga/effects';
 import { getCurrencies } from '../../../api/apiService';
 import {
   LOAD_CURRENCIES,
   loadCurrenciesFailure,
   loadCurrenciesSucces,
+  // CURRENCIES_SEARCH,
+  // currenciesSearch,
 } from '../../reducers/currencies/actions';
 
 export function* loadCurrenciesList(): Generator<StrictEffect> {
@@ -20,6 +28,15 @@ export function* loadCurrenciesList(): Generator<StrictEffect> {
   }
 }
 
-export default function* currenciesSaga(): Generator<StrictEffect> {
+export function* currenciesSaga(): Generator<StrictEffect> {
   yield takeLatest(LOAD_CURRENCIES, loadCurrenciesList);
 }
+
+// export function* filterCurrenciesList(): Generator<StrictEffect> {
+//   const data = yield call(, search)
+//   yield put(currenciesSearch(search));
+// }
+
+// export function* filterCurrenciesSaga(): Generator<StrictEffect> {
+//   yield takeEvery(CURRENCIES_SEARCH, filterCurrenciesList);
+// }

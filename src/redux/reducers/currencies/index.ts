@@ -1,5 +1,6 @@
 import { Action, Currencies } from '../../types';
 import {
+  CURRENCIES_SEARCH,
   LOAD_CURRENCIES,
   LOAD_CURRENCIES_FAILURE,
   LOAD_CURRENCIES_SUCCESS,
@@ -11,6 +12,7 @@ const initialCurrenciesState: Currencies = {
   error: '',
   base: '',
   rates: [],
+  filteredRates: [],
 };
 
 const formatRates = (rates: { [x: string]: number }) => {
@@ -42,6 +44,7 @@ export default function currenciesReduser(
         loading: false,
         base: action.payload.base,
         rates: formatRates(action.payload.rates),
+        filteredRates: formatRates(action.payload.rates),
       };
     }
 
@@ -50,6 +53,15 @@ export default function currenciesReduser(
         ...state,
         loading: false,
         error: action.payload,
+      };
+    }
+
+    case CURRENCIES_SEARCH: {
+      console.log(action.payload, state.filteredRates);
+      return {
+        ...state,
+        search: action.payload.search,
+        filteredRates: action.payload.filteredRates,
       };
     }
 
