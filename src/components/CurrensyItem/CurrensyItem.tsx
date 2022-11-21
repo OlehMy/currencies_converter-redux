@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import classes from './CurrensyItem.module.scss';
 
-export const CurrensyItem: React.FC = () => {
+type Props = {
+  name: string;
+  rate?: number;
+};
+
+export const CurrensyItem: React.FC<Props> = ({ name }) => {
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
@@ -10,7 +15,7 @@ export const CurrensyItem: React.FC = () => {
 
   return (
     <article className={classes.currensyItem}>
-      <p className={classes.currensyItem__title}>Some currency name</p>
+      <p className={classes.currensyItem__title}>{name}</p>
       <div className={classes.currensyItem__starGroup}>
         <input
           type="checkbox"
