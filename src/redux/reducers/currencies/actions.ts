@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from 'axios';
-import { Actions, Rate } from '../../types';
+import { Actions } from '../../types';
 
 export function loadCurrencies() {
   return { type: Actions.LOAD_CURRENCIES };
@@ -25,9 +25,6 @@ export function loadCurrencyExchangeFailure(error: AxiosError) {
   return { type: Actions.LOAD_CURRENCY_EXCHANGE_FAILURE, payload: error };
 }
 
-export function currenciesSearch(filteredRates: Rate[], search: string) {
-  return {
-    type: Actions.CURRENCIES_SEARCH,
-    payload: { filteredRates, search },
-  };
+export function currenciesSearch(data: any) {
+  return { type: Actions.CURRENCIES_SEARCH, payload: data };
 }

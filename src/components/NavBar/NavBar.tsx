@@ -7,10 +7,16 @@ export const NavBar: React.FC = () => {
     <nav className={classes.nav}>
       <ul className={classes.nav__list}>
         <li className={classes.nav__item}>
-          <PageNavLink to="/" label="All currencies" />
+          <PageNavLink
+            to="currencies_converter-redux/"
+            label="All currencies"
+          />
         </li>
         <li className={classes.nav__item}>
-          <PageNavLink to="my-currencies" label="My currencies" />
+          <PageNavLink
+            to="currencies_converter-redux/my-currencies"
+            label="My currencies"
+          />
         </li>
       </ul>
     </nav>

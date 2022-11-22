@@ -9,9 +9,10 @@ import store from './redux';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <Provider store={store}>
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <App />
     </Router>
   </Provider>

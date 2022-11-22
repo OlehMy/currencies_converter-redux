@@ -7,6 +7,7 @@ export interface Currencies {
   loading: boolean;
   error: string;
   base: string;
+  amount: string;
   exchangeResalt: number;
   rates: Rate[];
   filteredRates: Rate[];

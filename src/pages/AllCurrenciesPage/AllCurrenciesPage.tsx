@@ -10,7 +10,6 @@ import classes from './AllCurrenciesPage.module.scss';
 export const AllCurrenciesPage: React.FC = () => {
   const dispath = useDispatch();
   const store = useSelector<Store, Currencies>((store) => store.currencies);
-  console.log('store: ', store);
 
   useEffect(() => {
     dispath(loadCurrencies());

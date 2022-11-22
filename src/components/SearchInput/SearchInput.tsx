@@ -15,7 +15,12 @@ export const SearchInput: React.FC = () => {
       currencyName.toLowerCase().includes(search.toLowerCase())
     );
 
-    dispath(currenciesSearch(filteredRates, search));
+    const payload = {
+      filteredRates,
+      search,
+    };
+
+    dispath(currenciesSearch(payload));
   };
 
   return (

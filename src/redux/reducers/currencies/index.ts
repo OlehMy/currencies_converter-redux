@@ -5,6 +5,7 @@ const initialCurrenciesState: Currencies = {
   loading: false,
   error: '',
   base: 'EUR',
+  amount: '100',
   exchangeResalt: 0,
   rates: [],
   filteredRates: [],
@@ -59,10 +60,12 @@ export default function currenciesReduser(
     }
 
     case Actions.LOAD_CURRENCY_EXCHANGE_SUCCESS: {
+      console.log('LCES: ', action.payload.result);
       return {
         ...state,
         loading: false,
-        base: action.payload.query.to,
+        base: action.payload.query.from,
+        amount: action.payload.query.amount,
         exchangeResalt: action.payload.result,
       };
     }
@@ -76,7 +79,6 @@ export default function currenciesReduser(
     }
 
     case Actions.CURRENCIES_SEARCH: {
-      console.log(action.payload, state.filteredRates);
       return {
         ...state,
         search: action.payload.search,

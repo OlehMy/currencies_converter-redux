@@ -3,6 +3,7 @@ import {
   call,
   put,
   StrictEffect,
+  takeEvery,
   // takeEvery,
   takeLatest,
 } from 'redux-saga/effects';
@@ -11,7 +12,7 @@ import {
   loadCurrenciesFailure,
   loadCurrenciesSucces,
   loadCurrencyExchangeFailure,
-  // currenciesSearch,
+  loadCurrencyExchangeSucces,
 } from '../../reducers/currencies/actions';
 import { Action, Actions } from '../../types';
 
@@ -20,6 +21,7 @@ export function* loadCurrenciesList(): Generator<StrictEffect> {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const data: AxiosResponse = yield call(getCurrencies);
+
     yield put(loadCurrenciesSucces(data));
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -34,15 +36,13 @@ export function* currenciesSaga(): Generator<StrictEffect> {
 
 export function* loadCurrency(data: Action): Generator<StrictEffect> {
   const { payload } = data;
+
   try {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const data: AxiosResponse = yield call(getCurrencyExchange, payload);
-    // yield put({
-    //   type: Actions.LOAD_CURRENCY_EXCHANGE_SUCCESS,
-    //   payload: data,
-    // });
-    yield put(loadCurrenciesSucces(data));
+
+    yield put(loadCurrencyExchangeSucces(data));
   } catch (error) {
     if (axios.isAxiosError(error)) {
       yield put(loadCurrencyExchangeFailure(error));
@@ -51,14 +51,13 @@ export function* loadCurrency(data: Action): Generator<StrictEffect> {
 }
 
 export function* currencyExchangeSaga(): Generator<StrictEffect> {
-  yield takeLatest(Actions.LOAD_CURRENCY_EXCHANGE, loadCurrency);
+  yield takeEvery(Actions.LOAD_CURRENCY_EXCHANGE, loadCurrency);
 }
 
-// export function* filterCurrenciesList(): Generator<StrictEffect> {
-//   const data = yield call(, search)
-//   yield put(currenciesSearch(search));
+// export function* filterCurrenciesList(data: Action): Generator<StrictEffect> {
+//   yield put(currenciesSearch(data));
 // }
 
 // export function* filterCurrenciesSaga(): Generator<StrictEffect> {
-//   yield takeEvery(CURRENCIES_SEARCH, filterCurrenciesList);
+//   yield takeEvery(Actions.CURRENCIES_SEARCH, filterCurrenciesList);
 // }

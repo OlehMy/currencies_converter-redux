@@ -6,16 +6,15 @@ import { Currencies, Store } from '../../redux/types';
 import classes from './CurrencyExchangePage.module.scss';
 
 export const CurrencyExchangePage: React.FC = () => {
-  const [amount, setAmount] = useState('100');
   const dispath = useDispatch();
   const store = useSelector<Store, Currencies>((store) => store.currencies);
   const params = useParams();
+  const [amount, setAmount] = useState(store.amount);
 
-  console.log('store.base1: ', store.base);
   useEffect(() => {
     const payload = {
-      from: params.path,
-      to: store.base,
+      from: store.base,
+      to: params.path,
       amount,
     };
 
@@ -25,26 +24,14 @@ export const CurrencyExchangePage: React.FC = () => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setAmount(event.target.value);
 
-    console.log('store.base2: ', store.base);
     const payload = {
-      from: params.path,
-      to: store.base,
-      amount,
+      from: store.base,
+      to: params.path,
+      amount: event.target.value,
     };
 
     dispath(loadCurrencyExchange(payload));
-
-    // dispath({
-    //   type: Actions.LOAD_CURRENCY_EXCHANGE,
-    //   payload: {
-    //     from: params.path,
-    //     to: store.base,
-    //     amount: event.target.value,
-    //   },
-    // });
   };
-
-  console.log('er', store.exchangeResalt);
 
   return (
     <section className={classes.currencyExchange}>
@@ -75,7 +62,7 @@ export const CurrencyExchangePage: React.FC = () => {
               type="text"
               id="dynamic-label-input"
               placeholder={params.path}
-              value={store.exchangeResalt}
+              value={store.exchangeResalt.toFixed(2)}
               onChange={() => null}
             />
             <label
