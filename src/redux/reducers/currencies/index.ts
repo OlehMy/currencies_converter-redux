@@ -1,16 +1,11 @@
-import { Action, Currencies } from '../../types';
-import {
-  CURRENCIES_SEARCH,
-  LOAD_CURRENCIES,
-  LOAD_CURRENCIES_FAILURE,
-  LOAD_CURRENCIES_SUCCESS,
-} from './actions';
+import { Action, Actions, Currencies } from '../../types';
 
 const initialCurrenciesState: Currencies = {
   search: '',
   loading: false,
   error: '',
-  base: '',
+  base: 'EUR',
+  exchangeResalt: 0,
   rates: [],
   filteredRates: [],
 };
@@ -31,24 +26,24 @@ export default function currenciesReduser(
   action: Action
 ) {
   switch (action.type) {
-    case LOAD_CURRENCIES: {
+    case Actions.LOAD_CURRENCIES: {
       return {
         ...state,
         loading: true,
       };
     }
 
-    case LOAD_CURRENCIES_SUCCESS: {
+    case Actions.LOAD_CURRENCIES_SUCCESS: {
       return {
         ...state,
         loading: false,
-        base: action.payload.base,
+        search: '',
         rates: formatRates(action.payload.rates),
         filteredRates: formatRates(action.payload.rates),
       };
     }
 
-    case LOAD_CURRENCIES_FAILURE: {
+    case Actions.LOAD_CURRENCIES_FAILURE: {
       return {
         ...state,
         loading: false,
@@ -56,7 +51,31 @@ export default function currenciesReduser(
       };
     }
 
-    case CURRENCIES_SEARCH: {
+    case Actions.LOAD_CURRENCY_EXCHANGE: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+
+    case Actions.LOAD_CURRENCY_EXCHANGE_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        base: action.payload.query.to,
+        exchangeResalt: action.payload.result,
+      };
+    }
+
+    case Actions.LOAD_CURRENCY_EXCHANGE_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    }
+
+    case Actions.CURRENCIES_SEARCH: {
       console.log(action.payload, state.filteredRates);
       return {
         ...state,

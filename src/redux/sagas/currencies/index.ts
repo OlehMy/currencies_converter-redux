@@ -6,14 +6,14 @@ import {
   // takeEvery,
   takeLatest,
 } from 'redux-saga/effects';
-import { getCurrencies } from '../../../api/apiService';
+import { getCurrencies, getCurrencyExchange } from '../../../api/apiService';
 import {
-  LOAD_CURRENCIES,
   loadCurrenciesFailure,
   loadCurrenciesSucces,
-  // CURRENCIES_SEARCH,
+  loadCurrencyExchangeFailure,
   // currenciesSearch,
 } from '../../reducers/currencies/actions';
+import { Action, Actions } from '../../types';
 
 export function* loadCurrenciesList(): Generator<StrictEffect> {
   try {
@@ -29,7 +29,29 @@ export function* loadCurrenciesList(): Generator<StrictEffect> {
 }
 
 export function* currenciesSaga(): Generator<StrictEffect> {
-  yield takeLatest(LOAD_CURRENCIES, loadCurrenciesList);
+  yield takeLatest(Actions.LOAD_CURRENCIES, loadCurrenciesList);
+}
+
+export function* loadCurrency(data: Action): Generator<StrictEffect> {
+  const { payload } = data;
+  try {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const data: AxiosResponse = yield call(getCurrencyExchange, payload);
+    // yield put({
+    //   type: Actions.LOAD_CURRENCY_EXCHANGE_SUCCESS,
+    //   payload: data,
+    // });
+    yield put(loadCurrenciesSucces(data));
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      yield put(loadCurrencyExchangeFailure(error));
+    }
+  }
+}
+
+export function* currencyExchangeSaga(): Generator<StrictEffect> {
+  yield takeLatest(Actions.LOAD_CURRENCY_EXCHANGE, loadCurrency);
 }
 
 // export function* filterCurrenciesList(): Generator<StrictEffect> {

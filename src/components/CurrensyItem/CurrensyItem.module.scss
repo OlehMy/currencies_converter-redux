@@ -11,9 +11,9 @@
   border: 1px solid $c-light;
   color: $c-dark;
 
-
   &__title {
     font-size: 16px;
+    cursor: pointer;
   }
 
   &__starGroup {

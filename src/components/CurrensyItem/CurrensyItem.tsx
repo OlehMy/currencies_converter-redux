@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classes from './CurrensyItem.module.scss';
 
 type Props = {
@@ -7,6 +8,7 @@ type Props = {
 };
 
 export const CurrensyItem: React.FC<Props> = ({ name }) => {
+  const router = useNavigate();
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
@@ -15,7 +17,9 @@ export const CurrensyItem: React.FC<Props> = ({ name }) => {
 
   return (
     <article className={classes.currensyItem}>
-      <p className={classes.currensyItem__title}>{name}</p>
+      <p onClick={() => router(name)} className={classes.currensyItem__title}>
+        {name}
+      </p>
       <div className={classes.currensyItem__starGroup}>
         <input
           type="checkbox"
