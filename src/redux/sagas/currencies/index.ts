@@ -4,17 +4,17 @@ import {
   put,
   StrictEffect,
   takeEvery,
-  // takeEvery,
   takeLatest,
 } from 'redux-saga/effects';
 import { getCurrencies, getCurrencyExchange } from '../../../api/apiService';
 import {
+  currenciesSearchEnd,
   loadCurrenciesFailure,
   loadCurrenciesSucces,
   loadCurrencyExchangeFailure,
   loadCurrencyExchangeSucces,
 } from '../../reducers/currencies/actions';
-import { Action, Actions } from '../../types';
+import { Action, Actions, Rate } from '../../types';
 
 export function* loadCurrenciesList(): Generator<StrictEffect> {
   try {
@@ -54,10 +54,22 @@ export function* currencyExchangeSaga(): Generator<StrictEffect> {
   yield takeEvery(Actions.LOAD_CURRENCY_EXCHANGE, loadCurrency);
 }
 
-// export function* filterCurrenciesList(data: Action): Generator<StrictEffect> {
-//   yield put(currenciesSearch(data));
-// }
+const filterRates = (payload: { rates: Rate[]; search: string }) => {
+  const { rates, search } = payload;
+  const filteredRates = rates.filter((rate) =>
+    rate.currencyName.toLowerCase().includes(search.toLowerCase())
+  );
 
-// export function* filterCurrenciesSaga(): Generator<StrictEffect> {
-//   yield takeEvery(Actions.CURRENCIES_SEARCH, filterCurrenciesList);
-// }
+  return { filteredRates, search };
+};
+
+export function* filterCurrenciesList(
+  receiveData: Action
+): Generator<StrictEffect> {
+  const data = yield call(filterRates, receiveData.payload);
+  yield put(currenciesSearchEnd(data));
+}
+
+export function* filterCurrenciesSaga(): Generator<StrictEffect> {
+  yield takeEvery(Actions.CURRENCIES_SEARCH, filterCurrenciesList);
+}

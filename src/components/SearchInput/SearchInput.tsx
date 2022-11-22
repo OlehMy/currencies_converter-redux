@@ -10,14 +10,9 @@ export const SearchInput: React.FC = () => {
   const store = useSelector<Store, Currencies>((store) => store.currencies);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const search = event.target.value;
-    const filteredRates = store.rates.filter(({ currencyName }) =>
-      currencyName.toLowerCase().includes(search.toLowerCase())
-    );
-
     const payload = {
-      filteredRates,
-      search,
+      rates: store.rates,
+      search: event.target.value,
     };
 
     dispath(currenciesSearch(payload));

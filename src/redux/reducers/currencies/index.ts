@@ -81,6 +81,14 @@ export default function currenciesReduser(
     case Actions.CURRENCIES_SEARCH: {
       return {
         ...state,
+        loading: true,
+      };
+    }
+
+    case Actions.CURRENCIES_SEARCH_END: {
+      return {
+        ...state,
+        loading: false,
         search: action.payload.search,
         filteredRates: action.payload.filteredRates,
       };

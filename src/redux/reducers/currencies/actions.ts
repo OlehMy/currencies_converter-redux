@@ -28,3 +28,7 @@ export function loadCurrencyExchangeFailure(error: AxiosError) {
 export function currenciesSearch(data: any) {
   return { type: Actions.CURRENCIES_SEARCH, payload: data };
 }
+
+export function currenciesSearchEnd(data: any) {
+  return { type: Actions.CURRENCIES_SEARCH_END, payload: data };
+}
