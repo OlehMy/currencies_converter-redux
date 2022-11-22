@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from 'axios';
-import { Actions } from '../../types';
+import { Actions } from '../../../types';
 
 export function loadCurrencies() {
   return { type: Actions.LOAD_CURRENCIES };
@@ -31,4 +31,8 @@ export function currenciesSearch(data: any) {
 
 export function currenciesSearchEnd(data: any) {
   return { type: Actions.CURRENCIES_SEARCH_END, payload: data };
+}
+
+export function currencyCheckedTogler(data: any) {
+  return { type: Actions.CURRENCY_CHECKED_TOGLER, payload: data };
 }

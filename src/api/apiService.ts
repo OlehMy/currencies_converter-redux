@@ -12,7 +12,7 @@ export const getCurrencyExchange: (payload: any) => Promise<any> = async (
   payload
 ) => {
   const { from, to, amount } = payload;
-  console.log('payloadApi: ', payload);
+
   const currenciesResponse = await axios.get(`${URL}/convert`, {
     params: {
       from,

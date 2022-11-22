@@ -14,7 +14,7 @@ import {
   loadCurrencyExchangeFailure,
   loadCurrencyExchangeSucces,
 } from '../../reducers/currencies/actions';
-import { Action, Actions, Rate } from '../../types';
+import { Action, Actions, Rate } from '../../../types';
 
 export function* loadCurrenciesList(): Generator<StrictEffect> {
   try {

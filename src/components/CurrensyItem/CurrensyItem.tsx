@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { currencyCheckedTogler } from '../../redux/reducers/currencies/actions';
 import classes from './CurrensyItem.module.scss';
 
 type Props = {
   name: string;
-  rate?: number;
+  checked: boolean | undefined;
 };
 
-export const CurrensyItem: React.FC<Props> = ({ name }) => {
+export const CurrensyItem: React.FC<Props> = ({ name, checked }) => {
   const router = useNavigate();
-  const [checked, setChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(checked);
+  const dispath = useDispatch();
 
   const handleChange = () => {
-    setChecked(!checked);
+    setIsChecked(!isChecked);
+
+    const payload = {
+      name,
+      checked: !isChecked,
+    };
+
+    dispath(currencyCheckedTogler(payload));
   };
 
   return (
@@ -24,7 +34,7 @@ export const CurrensyItem: React.FC<Props> = ({ name }) => {
         <input
           type="checkbox"
           className={classes.currensyItem__checkbox}
-          checked={checked}
+          checked={isChecked}
           onChange={handleChange}
         />
         <span className={classes.currensyItem__icon}>

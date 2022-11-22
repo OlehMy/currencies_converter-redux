@@ -4,7 +4,7 @@ import { CurrensyItem } from '../../components/CurrensyItem';
 import { Loader } from '../../components/Loader';
 import { SearchInput } from '../../components/SearchInput';
 import { loadCurrencies } from '../../redux/reducers/currencies/actions';
-import { Currencies, Store } from '../../redux/types';
+import { Currencies, Store } from '../../types';
 import classes from './AllCurrenciesPage.module.scss';
 
 export const AllCurrenciesPage: React.FC = () => {
@@ -27,11 +27,11 @@ export const AllCurrenciesPage: React.FC = () => {
         {store.loading ? (
           <Loader />
         ) : (
-          store.filteredRates.map(({ currencyName, currencyRate }) => (
+          store.filteredRates.map(({ currencyName, checked }) => (
             <CurrensyItem
               key={currencyName}
               name={currencyName}
-              rate={currencyRate}
+              checked={checked}
             />
           ))
         )}

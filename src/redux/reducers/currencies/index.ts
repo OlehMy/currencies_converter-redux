@@ -1,4 +1,4 @@
-import { Action, Actions, Currencies } from '../../types';
+import { Action, Actions, Currencies } from '../../../types';
 
 const initialCurrenciesState: Currencies = {
   search: '',
@@ -15,8 +15,12 @@ const formatRates = (rates: { [x: string]: number }) => {
   const ratesArray = [];
 
   for (const key in rates) {
-    const z = { currencyName: key, currencyRate: rates[key] };
-    ratesArray.push(z);
+    const rate = {
+      currencyName: key,
+      currencyRate: rates[key],
+      checked: false,
+    };
+    ratesArray.push(rate);
   }
 
   return ratesArray;
@@ -60,7 +64,6 @@ export default function currenciesReduser(
     }
 
     case Actions.LOAD_CURRENCY_EXCHANGE_SUCCESS: {
-      console.log('LCES: ', action.payload.result);
       return {
         ...state,
         loading: false,
@@ -91,6 +94,16 @@ export default function currenciesReduser(
         loading: false,
         search: action.payload.search,
         filteredRates: action.payload.filteredRates,
+      };
+    }
+
+    case Actions.CURRENCY_CHECKED_TOGLER: {
+      const rates = state.filteredRates;
+      const { name, checked } = action.payload;
+      const index = rates.findIndex((rate) => rate.currencyName === name);
+      return {
+        ...state,
+        filteredRates: [...rates, (rates[index]['checked'] = checked)],
       };
     }
 

@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { currenciesSearch } from '../../redux/reducers/currencies/actions';
-import { Currencies, Store } from '../../redux/types';
+import { Currencies, Store } from '../../types';
 import classes from './SearchInput.module.scss';
 
 export const SearchInput: React.FC = () => {

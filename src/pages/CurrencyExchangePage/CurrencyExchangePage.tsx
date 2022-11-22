@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { loadCurrencyExchange } from '../../redux/reducers/currencies/actions';
-import { Currencies, Store } from '../../redux/types';
+import { Currencies, Store } from '../../types';
 import classes from './CurrencyExchangePage.module.scss';
 
 export const CurrencyExchangePage: React.FC = () => {

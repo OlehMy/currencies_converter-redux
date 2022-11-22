@@ -28,5 +28,6 @@
   &.isActive {
     transition: color 0.3s linear;
     color: $c-white;
+    border-bottom: 2px solid;
   }
 }

@@ -24,6 +24,10 @@ export const App: React.FC = () => {
             path="currencies_converter-redux/:path"
             element={<CurrencyExchangePage />}
           />
+          <Route
+            path="currencies_converter-redux/my-currencies/:path"
+            element={<CurrencyExchangePage />}
+          />
           <Route path="*" element={<NotFoundPage />} />
           <Route
             path="currencies_converter-redux/all-currencies"

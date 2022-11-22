@@ -16,6 +16,7 @@ export interface Currencies {
 export interface Rate {
   currencyName: string;
   currencyRate: number;
+  checked?: boolean;
 }
 
 export interface Action {
@@ -32,4 +33,5 @@ export enum Actions {
   LOAD_CURRENCY_EXCHANGE_FAILURE = 'LOAD_CURRENCY_EXCHANGE_FAILURE',
   CURRENCIES_SEARCH = 'CURRENCIES_SEARCH',
   CURRENCIES_SEARCH_END = 'CURRENCIES_SEARCH_END',
+  CURRENCY_CHECKED_TOGLER = 'CURRENCY_CHECKED_TOGLER',
 }
