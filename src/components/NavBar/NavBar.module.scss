@@ -1,4 +1,5 @@
 @import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
 @import '../../styles/utils/extends';
 @import '../../styles/utils/reset';
 
@@ -8,10 +9,19 @@
 
   &__list {
     @extend %flex-row-sb;
+
+    @include onMobile {
+      flex-direction: column;
+    }
   }
 
   &__item {
     padding-right: 16px;
     list-style: none;
+    &:not(:last-child) {
+      @include onMobile {
+        padding-bottom: 10px;
+      }
+    }
   }
 }
