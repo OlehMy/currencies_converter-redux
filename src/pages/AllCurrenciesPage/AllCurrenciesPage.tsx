@@ -10,10 +10,21 @@ import classes from './AllCurrenciesPage.module.scss';
 export const AllCurrenciesPage: React.FC = () => {
   const dispath = useDispatch();
   const store = useSelector<Store, Currencies>((store) => store.currencies);
+  let filteredRates = store.filteredRates;
 
   useEffect(() => {
     dispath(loadCurrencies());
   }, []);
+
+  if (localStorage.myCurrencies) {
+    const myCurrencies = JSON.parse(localStorage.myCurrencies);
+
+    filteredRates = store.filteredRates.map((rate) => {
+      myCurrencies.includes(rate.currencyName) ? (rate.checked = true) : rate;
+
+      return rate;
+    });
+  }
 
   return (
     <section className={classes.allCurrencies}>
@@ -27,7 +38,7 @@ export const AllCurrenciesPage: React.FC = () => {
         {store.loading ? (
           <Loader />
         ) : (
-          store.filteredRates.map(({ currencyName, checked }) => (
+          filteredRates.map(({ currencyName, checked }) => (
             <CurrensyItem
               key={currencyName}
               name={currencyName}

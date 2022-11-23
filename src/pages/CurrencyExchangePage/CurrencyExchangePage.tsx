@@ -22,12 +22,15 @@ export const CurrencyExchangePage: React.FC = () => {
   }, []);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setAmount(event.target.value);
+    const value =
+      !event.target.value || +event.target.value < 1 ? '1' : event.target.value;
+
+    setAmount(value);
 
     const payload = {
       from: store.base,
       to: params.path,
-      amount: event.target.value,
+      amount: value,
     };
 
     dispath(loadCurrencyExchange(payload));
@@ -44,6 +47,7 @@ export const CurrencyExchangePage: React.FC = () => {
             <input
               className={classes.currencyExchange__inputBody}
               type="number"
+              min="1"
               id="dynamic-label-input"
               placeholder={store.base}
               value={amount}
