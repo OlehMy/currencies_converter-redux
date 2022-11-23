@@ -102,9 +102,10 @@ export default function currenciesReduser(
       const rates = state.filteredRates;
       const { name, checked } = action.payload;
       const index = rates.findIndex((rate) => rate.currencyName === name);
+      rates[index].checked = checked;
       return {
         ...state,
-        filteredRates: [...rates, (rates[index]['checked'] = checked)],
+        filteredRates: [...rates],
       };
     }
 
