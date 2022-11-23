@@ -11,6 +11,7 @@ export interface Currencies {
   exchangeResalt: number;
   rates: Rate[];
   filteredRates: Rate[];
+  themeChecked: boolean;
 }
 
 export interface Rate {
@@ -34,4 +35,5 @@ export enum Actions {
   CURRENCIES_SEARCH = 'CURRENCIES_SEARCH',
   CURRENCIES_SEARCH_END = 'CURRENCIES_SEARCH_END',
   CURRENCY_CHECKED_TOGLER = 'CURRENCY_CHECKED_TOGLER',
+  THEME_CHECKED_TOGLER = 'THEME_CHECKED_TOGLER',
 }

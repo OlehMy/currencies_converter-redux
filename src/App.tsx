@@ -1,14 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header';
 import { AllCurrenciesPage } from './pages/AllCurrenciesPage';
 import { CurrencyExchangePage } from './pages/CurrencyExchangePage';
 import { MyCurrenciesPage } from './pages/MyCurrenciesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { Currencies, Store } from './types';
+import classNames from 'classnames';
 
 export const App: React.FC = () => {
+  const store = useSelector<Store, Currencies>((store) => store.currencies);
+  const { themeChecked } = store;
+
   return (
-    <div className="App">
+    <div className={classNames('App', { App__nightTheme: themeChecked })}>
       <Header />
       <main className="App__main">
         <Routes>

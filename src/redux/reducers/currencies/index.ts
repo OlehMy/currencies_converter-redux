@@ -9,6 +9,7 @@ const initialCurrenciesState: Currencies = {
   exchangeResalt: 0,
   rates: [],
   filteredRates: [],
+  themeChecked: false,
 };
 
 const formatRates = (rates: { [x: string]: number }) => {
@@ -104,6 +105,14 @@ export default function currenciesReduser(
       return {
         ...state,
         filteredRates: [...rates, (rates[index]['checked'] = checked)],
+      };
+    }
+
+    case Actions.THEME_CHECKED_TOGLER: {
+      const { checked } = action.payload;
+      return {
+        ...state,
+        themeChecked: checked,
       };
     }
 

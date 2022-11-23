@@ -1,0 +1,17 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/extends';
+@import '../../styles/utils/reset';
+
+.themeSwitcher {
+  color: $c-light;
+  
+  &__dayIcon {
+    padding-right: 10px;
+    font-size: 18px;
+  }
+  
+  &__nightIcon {
+    padding-left: 10px;
+    font-size: 18px;
+  }
+}

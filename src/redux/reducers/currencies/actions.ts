@@ -36,3 +36,7 @@ export function currenciesSearchEnd(data: any) {
 export function currencyCheckedTogler(data: any) {
   return { type: Actions.CURRENCY_CHECKED_TOGLER, payload: data };
 }
+
+export function themeCheckedTogler(data: any) {
+  return { type: Actions.THEME_CHECKED_TOGLER, payload: data };
+}

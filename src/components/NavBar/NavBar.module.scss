@@ -3,6 +3,9 @@
 @import '../../styles/utils/reset';
 
 .nav {
+  width: 100%;
+  @extend %flex-row-sb;
+
   &__list {
     @extend %flex-row-sb;
   }

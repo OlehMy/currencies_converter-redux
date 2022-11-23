@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageNavLink } from '../PageNavLink';
+import { ThemeSwitcher } from '../ThemeSwitcher';
 import classes from './NavBar.module.scss';
 
 export const NavBar: React.FC = () => {
@@ -19,6 +20,7 @@ export const NavBar: React.FC = () => {
           />
         </li>
       </ul>
+      <ThemeSwitcher />
     </nav>
   );
 };
