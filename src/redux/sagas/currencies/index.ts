@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import {
   call,
   put,
@@ -18,9 +18,7 @@ import { Action, Actions, Rate } from '../../../types';
 
 export function* loadCurrenciesList(): Generator<StrictEffect> {
   try {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const data: AxiosResponse = yield call(getCurrencies);
+    const data: any = yield call(getCurrencies);
 
     yield put(loadCurrenciesSucces(data));
   } catch (error) {
@@ -38,9 +36,7 @@ export function* loadCurrency(data: Action): Generator<StrictEffect> {
   const { payload } = data;
 
   try {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const data: AxiosResponse = yield call(getCurrencyExchange, payload);
+    const data: any = yield call(getCurrencyExchange, payload);
 
     yield put(loadCurrencyExchangeSucces(data));
   } catch (error) {

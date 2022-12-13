@@ -1,17 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header';
 import { AllCurrenciesPage } from './pages/AllCurrenciesPage';
 import { CurrencyExchangePage } from './pages/CurrencyExchangePage';
 import { MyCurrenciesPage } from './pages/MyCurrenciesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { Currencies, Store } from './types';
+import { Store } from './types';
 import classNames from 'classnames';
 
 export const App: React.FC = () => {
-  const store = useSelector<Store, Currencies>((store) => store.currencies);
-  const { themeChecked } = store;
+  const { themeChecked } = useSelector((store: Store) => store.currencies);
 
   return (
     <div className={classNames('App', { App__nightTheme: themeChecked })}>
@@ -35,10 +34,6 @@ export const App: React.FC = () => {
             element={<CurrencyExchangePage />}
           />
           <Route path="*" element={<NotFoundPage />} />
-          <Route
-            path="currencies_converter-redux/all-currencies"
-            element={<Navigate to="/" replace />}
-          />
         </Routes>
       </main>
     </div>

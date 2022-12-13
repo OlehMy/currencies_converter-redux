@@ -15,7 +15,7 @@
     font-size: 28px;
     line-height: 36px;
     font-weight: 800;
-    color: $c-dark;
+    color: inherit;
   }
 
   &__form {
@@ -37,7 +37,7 @@
     
     font-family: 'Mont', sans-serif;
     font-size: 14px;
-    color: $c-dark;
+    color: inherit;
     background-color: inherit;
     border: 1px solid $c-light;
     outline: none;
@@ -64,12 +64,13 @@
     opacity: 1;
     transform: translateY(0);
     transition: all 0.3s ease-out;
-    color: $c-dark;
+    color: inherit;
   }
 
   &__inputBody:placeholder-shown + &__label {
     opacity: 0;
     transform: translateY(16px);
     background-color: transparent;
+    color: inherit;
   }
 }

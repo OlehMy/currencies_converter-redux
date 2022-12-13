@@ -8,7 +8,7 @@
   width: 100%;
   margin-top: 24px;
   border: 1px solid $c-light;
-  color: $c-dark;
+  color: inherit;
   transition: box-shadow 0.1s linear, font-weight 0.2s linear;
 
   &__isActive{

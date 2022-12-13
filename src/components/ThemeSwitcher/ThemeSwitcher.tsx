@@ -21,7 +21,7 @@ export const ThemeSwitcher: React.FC = () => {
 
   return (
     <div className={classes.themeSwitcher}>
-      <span className={classes.themeSwitcher__dayIcon}>{'\u2600'}</span>
+      <span className={classes.themeSwitcher__dayIcon}>{'\u263C'}</span>
       <Switch checked={isChecked} onChange={handleChange}></Switch>
       <span className={classes.themeSwitcher__nightIcon}>{'\u263E'}</span>
     </div>

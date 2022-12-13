@@ -22,7 +22,7 @@
     font-size: 28px;
     line-height: 36px;
     font-weight: 800;
-    color: $c-dark;
+    color: inherit;
 
     @include onMobile {
       flex-basis: 100%;
