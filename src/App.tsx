@@ -24,7 +24,7 @@ export const App: React.FC = () => {
             path="/my-currencies/:path"
             element={<CurrencyExchangePage />}
           />
-          <Route path="/all-currencies" element={<Navigate to="/" />} />
+          <Route path="/all-currencies" element={<Navigate to="/" replace />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
