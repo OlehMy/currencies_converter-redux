@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const CurrensyItem: React.FC<Props> = ({ name, checked }) => {
-  const router = useNavigate();
+  const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(checked);
   const dispath = useDispatch();
 
@@ -47,9 +47,12 @@ export const CurrensyItem: React.FC<Props> = ({ name, checked }) => {
         [classes.currensyItem__isActive]: isChecked,
       })}
     >
-      <p onClick={() => router(name)} className={classes.currensyItem__title}>
+      <button
+        onClick={() => navigate(name)}
+        className={classes.currensyItem__button}
+      >
         {name}
-      </p>
+      </button>
       <div className={classes.currensyItem__starGroup}>
         <input
           type="checkbox"

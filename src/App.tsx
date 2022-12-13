@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header';
 import { AllCurrenciesPage } from './pages/AllCurrenciesPage';
 import { CurrencyExchangePage } from './pages/CurrencyExchangePage';
@@ -24,6 +24,7 @@ export const App: React.FC = () => {
             path="/my-currencies/:path"
             element={<CurrencyExchangePage />}
           />
+          <Route path="/all-currencies" element={<Navigate to="/" />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

@@ -21,13 +21,16 @@
   }
 
 
-  &__title {
+  &__button {
     height: 64px;
     width: 80%;
     padding-left: 24px;
     font-size: 16px;
     line-height: 64px;
     cursor: pointer;
+    color: inherit;
+    background-color: transparent;
+    text-align: left;
   }
 
   &__starGroup {
