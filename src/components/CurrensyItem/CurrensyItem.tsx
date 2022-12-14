@@ -48,7 +48,7 @@ export const CurrensyItem: React.FC<Props> = ({ name, checked }) => {
       })}
     >
       <button
-        onClick={() => navigate(name)}
+        onClick={() => navigate(`/${name}`)}
         className={classes.currensyItem__button}
       >
         {name}
